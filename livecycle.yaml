@@ -1,24 +1,22 @@
 version: v1alpha1
-
-web:
-    build:
-        type: Dockerfile    
-        dockerfile:
-            contents: |
-                        FROM node:14-buster
-                        WORKDIR /app
-                        COPY .yarn package.json yarn.lock ./
-                        RUN yarn
-                        COPY . .
-                        RUN yarn
-                        RUN yarn build
-    output:
-        type: static
-        static:
-            path: /app/.build/web
-            
-    proxy:
-      rules:
-      -	match: "^/api"
-        target: https://us-central1-kriasoft.cloudfunctions.net/reactstarter
-        force: true
+web: 
+  build: 
+    dockerfile: 
+      contents: |
+          FROM node:14-buster
+          WORKDIR /app
+          COPY .yarn package.json yarn.lock ./
+          RUN yarn
+          COPY . .
+          RUN yarn
+          RUN yarn build
+    type: Dockerfile
+  output: 
+    static: 
+      path: /app/.build/web
+    type: static
+  proxy: 
+    rules: 
+      - force: true
+        match: ^/api
+        target: "https://us-central1-kriasoft.cloudfunctions.net/reactstarter"
