@@ -7,10 +7,9 @@ web:
             contents: |
                         FROM node:14-buster
                         WORKDIR /app
-                        COPY package.json yarn.lock ./
+                        COPY .yarn package.json yarn.lock ./
                         RUN yarn
                         COPY . .
-                        RUN yarn
                         RUN yarn build
     output:
         type: static
