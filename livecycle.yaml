@@ -19,6 +19,6 @@ web:
             
     proxy:
       rules:
-      -	match: ^/api
+      -	match: "^/api"
         target: https://us-central1-kriasoft.cloudfunctions.net/reactstarter
         force: true
