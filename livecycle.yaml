@@ -16,8 +16,9 @@ web:
         type: static
         static:
             path: /app/.build/web
-proxy:
-  rules:
-    -	match: ^/api
-      target: https://us-central1-kriasoft.cloudfunctions.net/reactstarter
-      force: true
+            
+    proxy:
+      rules:
+        -	match: ^/api
+          target: https://us-central1-kriasoft.cloudfunctions.net/reactstarter
+          force: true
