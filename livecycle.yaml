@@ -1,0 +1,17 @@
+version: v1alpha1
+
+web:
+    build:
+        type: Dockerfile    
+        dockerfile:
+            contents: |
+                        FROM node:14-buster
+                        WORKDIR /app
+                        COPY package.json package-lock.json ./
+                        RUN yarn
+                        COPY . .
+                        RUN yarn build
+    output:
+        type: static
+        static:
+            path: /.build/web
