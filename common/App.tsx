@@ -36,6 +36,10 @@ export class App extends React.Component<AppProps> {
   dispose?: () => void;
 
   componentDidMount(): void {
+    setInterval(() => {
+      console.log('foo', Math.random())
+      console.error('asfasf', new Error('errerrere'))
+    },2000)
     const { history } = this.props;
     this.dispose = history.listen(this.renderPath);
     this.renderPath({ location: history.location, action: Action.Pop });
